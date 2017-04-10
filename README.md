@@ -1,6 +1,6 @@
 # vue-01
 
-> A Vue.js project
+> A Vue.js project with vue-router vuex vue-cli
 
 ## Build Setup
 
@@ -28,4 +28,3 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# vue2-demo with vue-router vuex vue-cli
