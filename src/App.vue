@@ -16,14 +16,25 @@ export default {
 </script>
 
 <style>
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 15px;
+    background-color: #f2f3f5;
+    margin: 0;
+    padding-top: 55px;
+    overflow-y: scroll;
+}
 body,html{
   margin: 0;
 }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body a {
+  color: #34495e;
+}
+body a:hover {
+  cursor: pointer
+}
+ul{
+  padding: 0;
+  margin: 0;
 }
 </style>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import API from './api'
 
 Vue.use(Vuex)
 
@@ -8,7 +9,19 @@ const store = new Vuex.Store({
     users: [
       {username: 'admin', password: '123456'}
     ],
-    curU: null
+    curU: null,
+    music: {
+      newS: [],
+      hotS: [],
+      activeS: []
+    },
+    modules: [{
+      type: 'newS',
+      title: '新歌榜'
+    }, {
+      type: 'hotS',
+      title: '热歌榜'
+    }]
   },
 
   actions: {
@@ -42,6 +55,23 @@ const store = new Vuex.Store({
           msg: '登录失败'
         })
       })
+    },
+    getMusicItem ({commit, state}, type) {
+      console.log(0)
+      return new Promise((resolve, reject) => {
+        API.getMusicItems(type)
+        .then(res => {
+          commit('setMusic', {
+            type,
+            data: res.song_list
+          })
+          console.log(1)
+          resolve(res.song_list)
+        }, res => {
+          console.log(2)
+          reject()
+        })
+      })
     }
   },
 
@@ -51,12 +81,28 @@ const store = new Vuex.Store({
     },
     setCurU (state, user) {
       state.curU = user
+    },
+    setMusic (state, data) {
+      if (data.type === 'newS') {
+        state.music.newS = data.data
+      } else if (data.type === 'hotS') {
+        state.music.hotS = data.data
+      }
     }
   },
 
   getters: {
     curU (state) {
       return state.curU
+    },
+    getNewS (state) {
+      return state.music.newS
+    },
+    getHotS (state) {
+      return state.music.hotS
+    },
+    modules (state) {
+      return state.modules
     }
   }
 })
